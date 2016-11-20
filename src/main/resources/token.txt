@@ -1,0 +1,26 @@
+0hKcygd0xc8vZkcFDTcQ1yc8NNTfPQWQbYPRBqDxZs5ucmzVgFnPuhTuU5IkjSti-N-WFIUK
+root folder:
+{
+"kind":"folderTree",
+"data":[
+{
+"id":"IEAAO2AZI7777777",
+"title":"Root",
+"childIds":[],
+"scope":"WsRoot"
+},
+{
+"id":"IEAAO2AZI7777776",
+"title":"Recycle Bin",
+"childIds":[],
+"scope":"RbRoot"
+}
+]
+}
+
+
+works in curl:
+
+  curl -g -X POST -d title=hello https://www.wrike.com/api/v3/folders/IEAAO2AZI7777777/tasks?access_token=0hKcygd0xc8vZkcFDTcQ1yc8NNTfPQWQbYPRBqDxZs5ucmzVgFnPuhTuU5IkjSti-N-WFIUK
+
+curl https://www.wrike.com/api/v3/tasks?access_token=0hKcygd0xc8vZkcFDTcQ1yc8NNTfPQWQbYPRBqDxZs5ucmzVgFnPuhTuU5IkjSti-N-WFIUK
