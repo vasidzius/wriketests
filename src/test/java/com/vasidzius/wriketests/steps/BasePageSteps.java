@@ -7,8 +7,6 @@ import org.junit.After;
 import org.junit.Rule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -28,7 +26,6 @@ public class BasePageSteps {
             makeScreenShot();
         }
     };
-
 
     @After
     public void killDriver() {

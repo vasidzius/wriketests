@@ -58,10 +58,12 @@
 
     </dependencies>
 
-    <!--For allure-reports-->
     <properties>
+        <!--For allure-reports-->
         <aspectj.version>1.7.4</aspectj.version>
         <allure.version>1.5.0.RC2</allure.version>
+        <!--For run only suits-->
+        <runSuite>**/TestSuite*.class</runSuite>
     </properties>
 
     <!--Creating allure reports-->
@@ -73,8 +75,11 @@
                 <version>2.14</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
+                    <includes>
+                        <include>${runSuite}</include>
+                    </includes>
                     <argLine>
-                         -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                     </argLine>
                     <properties>
                         <property>
