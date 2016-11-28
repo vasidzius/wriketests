@@ -56,11 +56,17 @@
             <version>1.5.0.RC2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
         <!--For allure-reports-->
-        <aspectj.version>1.7.4</aspectj.version>
+        <aspectj.version>1.8.9</aspectj.version>
         <allure.version>1.5.0.RC2</allure.version>
         <!--For run only suits-->
         <runSuite>**/TestSuite*.class</runSuite>
@@ -72,7 +78,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.14</version>
+                <version>2.19.1</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
                     <includes>
@@ -106,6 +112,7 @@
             <plugin>
                 <groupId>ru.yandex.qatools.allure</groupId>
                 <artifactId>allure-maven-plugin</artifactId>
+                <version>2.5</version>
             </plugin>
         </plugins>
     </reporting>

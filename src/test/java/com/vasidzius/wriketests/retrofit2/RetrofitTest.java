@@ -19,7 +19,7 @@ public class RetrofitTest {
 
 
         WrikeService service = retrofit.create(WrikeService.class);
-        Call<ResponseBody> call = service.createTask("from Code5");
+        Call<ResponseBody> call = service.createTask("from Code25");
         Response<ResponseBody> response = call.execute();
         System.out.println(response.isSuccessful());
         System.out.println(response.body().string());
