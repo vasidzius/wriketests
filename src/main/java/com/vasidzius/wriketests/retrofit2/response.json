@@ -1,0 +1,76 @@
+{
+  "kind": String,
+  "data":
+  [
+    {
+      "id": String,
+      "accountId": String,
+      "title": String,
+      "description": String,
+      "briefDescription": String,
+      "parentIds": List<String>,
+      "superParentIds":
+      [
+        "IEAGIITRI4AYHYMW"
+      ],
+      "sharedIds":
+      [
+        "KUAJ25LD"
+      ],
+      "responsibleIds":
+      [
+        "KUAJ25LD"
+      ],
+      "status": "Active",
+      "importance": "High",
+      "createdDate": "2016-10-03T16:10:41Z",
+      "updatedDate": "2016-10-03T16:10:41Z",
+      "dates":
+      {
+        "type": "Planned",
+        "duration": 2880,
+        "start": "2016-10-03T09:00:00",
+        "due": "2016-10-10T17:00:00"
+      },
+      "scope": "WsTask",
+      "authorIds":
+      [
+        "KUAJ25LD"
+      ],
+      "customStatusId": "IEAGIITRJMAAAAAA",
+      "hasAttachments": false,
+      "attachmentCount": 0,
+      "permalink": "https://www.wrike.com/open.htm?id=25420190",
+      "priority": "19453c0000006e00",
+      "followedByMe": true,
+      "followerIds":
+      [
+        "KUAJ25LD"
+      ],
+      "superTaskIds":
+      [
+        "IEAGIITRKQAYHYM4"
+      ],
+      "subTaskIds":
+      [
+      ],
+      "dependencyIds":
+      [
+      ],
+      "metadata":
+      [
+        {
+          "key": "testMetaKey",
+          "value": "testMetaValue"
+        }
+      ],
+      "customFields":
+      [
+        {
+          "id": "IEAGIITRJUAAHU62",
+          "value": "testValue"
+        }
+      ]
+    }
+  ]
+}
