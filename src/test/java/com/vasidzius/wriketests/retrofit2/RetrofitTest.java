@@ -1,21 +1,18 @@
 package com.vasidzius.wriketests.retrofit2;
 
+import com.google.common.io.Files;
 import com.google.gson.Gson;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
 import com.vasidzius.wriketests.retrofit2.tasks.FieldMapForCreateTask;
 import com.vasidzius.wriketests.retrofit2.tasks.Task;
 import okhttp3.ResponseBody;
+import org.json.JSONObject;
 import org.junit.Test;
 import retrofit2.Call;
 import retrofit2.Response;
-import org.json.*;
-import com.google.common.io.Files;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.prefs.AbstractPreferences;
 
 import static org.junit.Assert.assertEquals;
 
