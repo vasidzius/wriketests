@@ -10,11 +10,10 @@ public interface WrikeService {
 
     @FormUrlEncoded
     @POST("folders/IEAAO2AZI7777777/tasks")
-    Call<ResponseBody> createTask(@Field("title") String title);
-
-    @FormUrlEncoded
-    @POST("folders/IEAAO2AZI7777777/tasks")
     Call<ResponseBody> createTaskWithFieldMap(@FieldMap Map<String, String> fieldMap);
+
+    @DELETE("tasks/{taskId}")
+    Call<ResponseBody> deleteTask(@Path("taskId") String taskId);
 
 
 }

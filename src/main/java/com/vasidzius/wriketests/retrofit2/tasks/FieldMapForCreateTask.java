@@ -1,4 +1,4 @@
-package com.vasidzius.wriketests.retrofit2.fieldmaps;
+package com.vasidzius.wriketests.retrofit2.tasks;
 
 import java.util.HashMap;
 import java.util.Map;

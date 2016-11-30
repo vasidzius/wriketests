@@ -1,14 +1,17 @@
 {
-  "kind": String,
+  "kind": "tasks",
   "data":
   [
     {
-      "id": String,
-      "accountId": String,
-      "title": String,
-      "description": String,
-      "briefDescription": String,
-      "parentIds": List<String>,
+      "id": "IEAGIITRKQAYHYM6",
+      "accountId": "IEAGIITR",
+      "title": "Test task",
+      "description": "Test task description",
+      "briefDescription": "Test task description",
+      "parentIds":
+      [
+        "IEAGIITRI4AYHYMV"
+      ],
       "superParentIds":
       [
         "IEAGIITRI4AYHYMW"

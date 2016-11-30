@@ -1,40 +1,25 @@
 package com.vasidzius.wriketests.retrofit2;
 
-import com.vasidzius.wriketests.retrofit2.fieldmaps.FieldMapForCreateTask;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.vasidzius.wriketests.retrofit2.tasks.FieldMapForCreateTask;
+import com.vasidzius.wriketests.retrofit2.tasks.Task;
 import okhttp3.ResponseBody;
 import org.junit.Test;
 import retrofit2.Call;
 import retrofit2.Response;
+import org.json.*;
+import com.google.common.io.Files;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.nio.charset.Charset;
+import java.util.prefs.AbstractPreferences;
 
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class RetrofitTest extends RetrofitBaseTest {
-
-    @Test
-    public void testCreateNewTaskInRootCatalog() throws IOException {
-
-        Call<ResponseBody> call = service.createTask("testCreateNewTaskInRootCatalog999");
-        Response<ResponseBody> response = call.execute();
-        assertTrue(response.isSuccessful());
-        System.out.println(response.body().string());
-    }
-
-    @Test
-    public void testCreateNewTaskWithFieldMap() throws IOException {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("title", "withMapField44");
-        map.put("status", "completed");
-        map.put("title", "withMapField55");
-        Call<ResponseBody> call = service.createTaskWithFieldMap(map);
-        Response<ResponseBody> response = call.execute();
-        assertTrue(response.isSuccessful());
-        System.out.println(response.code());
-        System.out.println(response.body().string());
-    }
 
     @Test
     public void testCreateNewTaskWithCustomFieldMap() throws IOException {
@@ -50,6 +35,39 @@ public class RetrofitTest extends RetrofitBaseTest {
         customAssert(response);
     }
 
-    //
+    @Test
+    public void testGetPartOfJson() throws IOException {
+
+        JSONObject obj = new JSONObject(
+                Files.toString(
+                        new File(RetrofitTest.class.getResource("createTaskResponse.json").getFile()),
+                        Charset.defaultCharset())
+        );
+        JSONObject jsonTask = (JSONObject)obj.getJSONArray("data").get(0);
+        Gson gson = new Gson();
+        Task task = gson.fromJson(jsonTask.toString(), Task.class);
+
+        assertEquals("IEAGIITRKQAYHYM6", task.getId());
+    }
+
+    @Test
+    public void testCreateDeleteTask() throws IOException {
+        Call<ResponseBody> callToCreate = service.createTaskWithFieldMap(
+                FieldMapForCreateTask.Builder("task for delete")
+                .build()
+        );
+        Response<ResponseBody> responseFromCreate = callToCreate.execute();
+        customAssert(responseFromCreate);
+        Gson gson = new Gson();
+        JSONObject jsonObject = new JSONObject(responseFromCreate.body().string());
+        JSONObject jsonTask = (JSONObject) jsonObject.getJSONArray("data").get(0);
+        Task task = gson.fromJson(jsonTask.toString(), Task.class);
+        String taskId = task.getId();
+        Call<ResponseBody> callToDelete = service.deleteTask(taskId);
+        Response<ResponseBody> responseFromDelete = callToDelete.execute();
+        customAssert(responseFromDelete);
+
+    }
+
 
 }
