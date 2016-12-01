@@ -19,6 +19,7 @@ public class BasePageSteps {
     Injector injector = Guice.createInjector(new GuiceModule());
 
     private WebDriver driver = injector.getInstance(WebDriver.class);
+
     @Rule
     public TestWatcher screenShotOnFailure = new TestWatcher() {
         @Override

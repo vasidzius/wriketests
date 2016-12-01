@@ -22,4 +22,12 @@ public class LoginPageSteps {
     boolean isOpened() {
         return loginPage.enterButton.isDisplayed();
     }
+
+    @Step("Аутентификация")
+    void login(String login, String password){
+        loginPage.emailField.sendKeys(login);
+        loginPage.passwordField.sendKeys(password);
+        loginPage.enterButton.click();
+
+    }
 }

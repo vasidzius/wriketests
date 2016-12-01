@@ -46,7 +46,8 @@ class RetrofitBaseTest {
     }
 
     void customAssert(retrofit2.Response<ResponseBody> response) throws IOException {
-        assertThat(response.errorBody() == null ? "" : response.errorBody().string(),
+        assertThat(response.errorBody() == null ? "" :
+                        response.code() + response.errorBody().string(),
                 response.errorBody(),
                 is(nullValue())
         );
