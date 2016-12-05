@@ -13,12 +13,18 @@ import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
 
+import java.net.PasswordAuthentication;
+
 @SuppressWarnings("WeakerAccess")
 public class BasePageSteps {
 
     Injector injector = Guice.createInjector(new GuiceModule());
 
     private WebDriver driver = injector.getInstance(WebDriver.class);
+
+    private PasswordAuthentication auth = injector.getInstance(PasswordAuthentication.class);
+
+    LoginPageSteps loginPageSteps = injector.getInstance(LoginPageSteps.class);
 
     @Rule
     public TestWatcher screenShotOnFailure = new TestWatcher() {
@@ -34,8 +40,18 @@ public class BasePageSteps {
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")
-    @Step("Make screen shot of results page")
+    @Step("Скриншот сломанного теста")
     public byte[] makeScreenShot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
+
+    @Step("Пройти аутентификацию с дефолтовым юзером")
+    void authWithDefaultUser() {
+        loginPageSteps.open();
+        loginPageSteps.login(
+                auth.getUserName(),
+                auth.getPassword()
+        );
     }
 }

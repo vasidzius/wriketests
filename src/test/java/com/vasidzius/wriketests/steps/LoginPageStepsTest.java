@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 public class LoginPageStepsTest extends BasePageSteps {
 
-    private LoginPageSteps loginPageSteps = injector.getInstance(LoginPageSteps.class);
+    private WorkPageSteps workPageSteps = injector.getInstance(WorkPageSteps.class);
 
     @Description("Открыть страницу аутентификации")
     @Test
@@ -19,13 +19,8 @@ public class LoginPageStepsTest extends BasePageSteps {
     @Description("Зайти в рабочее пространство")
     @Test
     public void testAuthentication() throws InterruptedException {
-        loginPageSteps.open();
-        loginPageSteps.login(
-                "vasiliy.kovalchenko@gmail.com",
-                "testtesttest"
-        );
-        Thread.sleep(5000);
+        authWithDefaultUser();
+        assertTrue(workPageSteps.isOpened());
     }
-
 
 }

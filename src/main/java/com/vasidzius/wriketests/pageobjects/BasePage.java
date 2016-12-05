@@ -14,7 +14,7 @@ public class BasePage {
     }
 
     @Inject
-    BasePage(WebDriver webDriver) {
+    protected BasePage(WebDriver webDriver) {
         this.driver = webDriver;
         PageFactory.initElements(new HtmlElementDecorator(new HtmlElementLocatorFactory(driver)), this);
     }

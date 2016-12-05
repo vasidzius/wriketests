@@ -4,14 +4,10 @@ import com.google.inject.Inject;
 import com.vasidzius.wriketests.pageobjects.LoginPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
-public class LoginPageSteps {
-
-    private LoginPage loginPage;
+class LoginPageSteps {
 
     @Inject
-    public LoginPageSteps(LoginPage loginPage) {
-        this.loginPage = loginPage;
-    }
+    private LoginPage loginPage;
 
     @Step("Открыть страницу логина")
     void open() {
@@ -24,10 +20,10 @@ public class LoginPageSteps {
     }
 
     @Step("Аутентификация")
-    void login(String login, String password){
+    void login(String login, char[] password){
         loginPage.emailField.sendKeys(login);
-        loginPage.passwordField.sendKeys(password);
+        loginPage.passwordField.sendKeys(String.valueOf(password));
         loginPage.enterButton.click();
-
     }
+
 }

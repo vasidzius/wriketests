@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
+import java.net.PasswordAuthentication;
 
 public class GuiceModule extends AbstractModule {
     @Override
@@ -20,6 +21,12 @@ public class GuiceModule extends AbstractModule {
             System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
             bind(WebDriver.class).toInstance(new ChromeDriver());
         }
+
+        bind(PasswordAuthentication.class).toInstance(new PasswordAuthentication(
+                "vasiliy.kovalchenko@gmail.com",
+                "testtesttest".toCharArray()
+        ));
+
     }
 
 //    @Provides
