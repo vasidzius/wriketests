@@ -16,10 +16,13 @@ public interface WrikeService {
             @FieldMap Map<String, String> fieldMap
     );
 
+    @GET("tasks")
+    Call<ResponseBody> getTask(@Query("title") String title);
+
     @DELETE("tasks/{taskId}")
     Call<ResponseBody> deleteTask(@Path("taskId") String taskId);
 
-    //folders
+        //folders
     @GET("folders")
     Call<ResponseBody> getFolders();
 
@@ -29,10 +32,10 @@ public interface WrikeService {
             @Path("parentFolderId") String parentFolderId,
             @FieldMap Map<String, String> fieldMap
     );
-
     @DELETE("folders/{folderId}")
     Call<ResponseBody> deleteFolder(@Path("folderId") String folderId);
 
     @GET("brokenrequest")
     Call<ResponseBody> brokenRequest();
+
 }

@@ -1,21 +1,20 @@
 package com.vasidzius.wriketests.retrofit2;
 
-import okhttp3.*;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.nullValue;
-import static org.junit.Assert.assertThat;
 
-class RetrofitBaseTest {
+public class CustomRetrofit {
 
-    WrikeService service;
+    private WrikeService service;
 
-    RetrofitBaseTest() {
-
+    public CustomRetrofit() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
@@ -45,11 +44,7 @@ class RetrofitBaseTest {
         service = retrofit.create(WrikeService.class);
     }
 
-    void customAssert(retrofit2.Response<ResponseBody> response) throws IOException {
-        assertThat(response.errorBody() == null ? "" :
-                        response.code() + response.errorBody().string(),
-                response.errorBody(),
-                is(nullValue())
-        );
+    public WrikeService getService() {
+        return service;
     }
 }

@@ -14,7 +14,8 @@ import ru.yandex.qatools.allure.annotations.Parameter;
         WorkPageStepsTest.class
 })
 public class TestSuiteChrome {
-    @Parameter
+
+    @SuppressWarnings("FieldCanBeLocal")
     private static String currentBrowser = "Chrome";
 
     @BeforeClass

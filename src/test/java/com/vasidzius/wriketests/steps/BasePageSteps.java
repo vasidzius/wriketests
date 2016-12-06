@@ -3,6 +3,8 @@ package com.vasidzius.wriketests.steps;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.vasidzius.wriketests.guice.GuiceModule;
+import com.vasidzius.wriketests.retrofit2.CustomRetrofit;
+import com.vasidzius.wriketests.retrofit2.WrikeService;
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.rules.TestWatcher;
@@ -11,6 +13,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Attachment;
+import ru.yandex.qatools.allure.annotations.Parameter;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import java.net.PasswordAuthentication;
@@ -26,6 +29,12 @@ public class BasePageSteps {
 
     LoginPageSteps loginPageSteps = injector.getInstance(LoginPageSteps.class);
 
+    WrikeService wrikeService = new CustomRetrofit().getService();
+
+    @SuppressWarnings("unused")
+    @Parameter
+    private String currentBrowser = System.getProperty("currentBrowser");
+
     @Rule
     public TestWatcher screenShotOnFailure = new TestWatcher() {
         @Override
@@ -35,7 +44,7 @@ public class BasePageSteps {
     };
 
     @After
-    public void killDriver() {
+    public void killDriver() throws InterruptedException {
         driver.close();
     }
 

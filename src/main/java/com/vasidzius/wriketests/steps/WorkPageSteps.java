@@ -5,8 +5,6 @@ import com.vasidzius.wriketests.pageobjects.workspace.WorkSpacePage;
 import org.openqa.selenium.Keys;
 import ru.yandex.qatools.allure.annotations.Step;
 
-import static org.junit.Assert.assertTrue;
-
 class WorkPageSteps {
 
     @Inject

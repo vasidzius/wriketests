@@ -13,7 +13,9 @@ public class GuiceModule extends AbstractModule {
     protected void configure() {
         if (System.getProperty("currentBrowser") == null) {
             System.out.println("No property 'currentBrowser' exists");
+
             bind(WebDriver.class).toInstance(new FirefoxDriver());
+
         } else if (System.getProperty("currentBrowser").equals("Firefox")) {
             bind(WebDriver.class).toInstance(new FirefoxDriver());
         } else if (System.getProperty("currentBrowser").equals("Chrome")) {

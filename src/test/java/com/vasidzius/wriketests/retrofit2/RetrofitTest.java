@@ -18,15 +18,18 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+import static com.vasidzius.wriketests.retrofit2.RetrofitTestUtils.*;
 import static org.junit.Assert.assertEquals;
 
-public class RetrofitTest extends RetrofitBaseTest {
+public class RetrofitTest {
+
+    WrikeService service = new CustomRetrofit().getService();
 
     @Description("Создание таски с помощью CustomFieldMap")
     @Test
     public void testCreateNewTaskWithCustomFieldMap() throws IOException {
         Call<ResponseBody> callCreateTask = service.createTaskWithFieldMap(
-                RetrofitTestUtils.getRootFolderId(this),
+                getRootFolderId(this),
                 FieldMapForCreateTask.Builder("with CustomFieldMap")
                         .description("Some description")
                         .importance(FieldMapForCreateTask.ImportanceEnum.HIGH)
@@ -36,7 +39,7 @@ public class RetrofitTest extends RetrofitBaseTest {
 
         Response<ResponseBody> responseFromCreate = callCreateTask.execute();
         customAssert(responseFromCreate);
-        Task task = RetrofitTestUtils.getItem(responseFromCreate, new TypeToken<Task>() {
+        Task task = getItem(responseFromCreate, new TypeToken<Task>() {
         });
         String taskId = task.getId();
         Call<ResponseBody> callToDelete = service.deleteTask(taskId);
@@ -63,13 +66,13 @@ public class RetrofitTest extends RetrofitBaseTest {
     @Test
     public void testCreateDeleteTask() throws IOException {
         Call<ResponseBody> callToCreate = service.createTaskWithFieldMap(
-                RetrofitTestUtils.getRootFolderId(this),
+                getRootFolderId(this),
                 FieldMapForCreateTask.Builder("task for delete")
                         .build()
         );
         Response<ResponseBody> responseFromCreate = callToCreate.execute();
         customAssert(responseFromCreate);
-        Task task = RetrofitTestUtils.getItem(responseFromCreate, new TypeToken<Task>() {
+        Task task = getItem(responseFromCreate, new TypeToken<Task>() {
         });
         String taskId = task.getId();
         Call<ResponseBody> callToDelete = service.deleteTask(taskId);
@@ -83,7 +86,7 @@ public class RetrofitTest extends RetrofitBaseTest {
         Call<ResponseBody> callGetFolderTree = service.getFolders();
         Response<ResponseBody> response = callGetFolderTree.execute();
         customAssert(response);
-        Folder folder = RetrofitTestUtils.getItem(response, new TypeToken<Folder>() {
+        Folder folder = getItem(response, new TypeToken<Folder>() {
         });
         assertEquals("Root", folder.getTitle());
         assertEquals("IEAAO2AZI7777777", folder.getId());
@@ -91,21 +94,22 @@ public class RetrofitTest extends RetrofitBaseTest {
 
     @Test
     public void testGetRootFolderId() throws IOException {
-        String rootFolderId = RetrofitTestUtils.getRootFolderId(this);
+        String rootFolderId = getRootFolderId(this);
         assertEquals("IEAAO2AZI7777777", rootFolderId);
     }
 
     @Test
     public void testCreateDeleteFolder() throws IOException {
         Call<ResponseBody> callCreateFolder = service.createFolder(
-                RetrofitTestUtils.getRootFolderId(this),
+                getRootFolderId(this),
                 FieldMapForCreateFolder.Builder("test folder AXYABS")
-                .description("test description")
-                .build()
+                        .description("test description")
+                        .build()
         );
         Response<ResponseBody> responseCreate = callCreateFolder.execute();
         customAssert(responseCreate);
-        Folder folder = RetrofitTestUtils.getItem(responseCreate, new TypeToken<Folder>() {});
+        Folder folder = getItem(responseCreate, new TypeToken<Folder>() {
+        });
         Call<ResponseBody> callDeleteFolder = service.deleteFolder(folder.getId());
         Response<ResponseBody> responseDelete = callDeleteFolder.execute();
         customAssert(responseDelete);
@@ -117,7 +121,13 @@ public class RetrofitTest extends RetrofitBaseTest {
         Call<ResponseBody> callCreateFolder = service.brokenRequest();
         Response<ResponseBody> response = callCreateFolder.execute();
         customAssert(response);
+    }
 
+    @Test
+    public void testGetTaskByName() throws IOException {
+        Call<ResponseBody> callGetTaskByName = service.getTask("test123");
+        Response<ResponseBody> response = callGetTaskByName.execute();
+        customAssert(response);
     }
 
 

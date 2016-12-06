@@ -12,6 +12,10 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 import java.io.IOException;
 
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.Assert.assertThat;
+
 public class RetrofitTestUtils {
 
     @Step("Конвертировать json из ответа в экземпляр")
@@ -24,12 +28,29 @@ public class RetrofitTestUtils {
     }
 
     @Step("получить rootFolderId")
-    static String getRootFolderId(RetrofitBaseTest retrofit) throws IOException {
+    static String getRootFolderId(RetrofitTest retrofit) throws IOException {
         Call<ResponseBody> callGetFolderTree = retrofit.service.getFolders();
         Response<ResponseBody> response = callGetFolderTree.execute();
-        retrofit.customAssert(response);
+        customAssert(response);
         Folder folder = getItem(response, new TypeToken<Folder>() {
         });
         return folder.getId();
+    }
+
+    public static void customAssert(Response<ResponseBody> response) throws IOException {
+        assertThat(response.errorBody() == null ? "" :
+                        response.code() + response.errorBody().string(),
+                response.errorBody(),
+                is(nullValue())
+        );
+    }
+
+    public static void deleteTaskByName(WrikeService wrikeService, String name) throws IOException {
+        Call<ResponseBody> call = wrikeService.getTask(name);
+        Response<ResponseBody> response = call.execute();
+        Task task = getItem(response, new TypeToken<Task>() {});
+        String taskId = task.getId();
+        Call<ResponseBody> deleteResponse = wrikeService.deleteTask(taskId);
+        customAssert(deleteResponse.execute());
     }
 }
