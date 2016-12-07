@@ -1,7 +1,7 @@
 package com.vasidzius.wriketests;
 
-import com.vasidzius.wriketests.steps.LoginPageStepsTest;
-import com.vasidzius.wriketests.steps.WorkPageStepsTest;
+import com.vasidzius.wriketests.logic.LoginPageStepsTest;
+import com.vasidzius.wriketests.logic.WorkPageStepsTest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

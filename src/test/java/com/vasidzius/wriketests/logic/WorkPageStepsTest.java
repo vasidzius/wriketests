@@ -1,4 +1,4 @@
-package com.vasidzius.wriketests.steps;
+package com.vasidzius.wriketests.logic;
 
 import com.vasidzius.wriketests.retrofit2.RetrofitTestUtils;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.vasidzius.wriketests.steps;
+package com.vasidzius.wriketests.logic;
 
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Description;

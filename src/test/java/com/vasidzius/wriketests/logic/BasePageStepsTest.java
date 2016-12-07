@@ -1,4 +1,4 @@
-package com.vasidzius.wriketests.steps;
+package com.vasidzius.wriketests.logic;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
