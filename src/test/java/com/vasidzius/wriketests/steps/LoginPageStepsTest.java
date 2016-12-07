@@ -24,4 +24,11 @@ public class LoginPageStepsTest extends BasePageSteps {
         assertTrue(workPageSteps.isOpened());
     }
 
+    @Description("Сломанный тест для проверки прикрепления скриншотов по падению теста")
+    @Test
+    public void testUIBroken(){
+        loginPageSteps.open();
+        assertTrue(false);
+    }
+
 }

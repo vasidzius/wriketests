@@ -14,13 +14,13 @@ public class WorkPageStepsTest extends BasePageSteps {
 
     @Description("Отрыть страницу Workspace")
     @Test
-    public void testOpen(){
+    public void testOpenWorkspace(){
         authWithDefaultUser();
         assertTrue(workPageSteps.isOpened());
     }
 
     @Description("Создать задачу через UI, проверить ее существование с помощью" +
-            "Retrofit и удалить эту задачу с помощью Retrofit")
+            " Retrofit и удалить эту задачу с помощью Retrofit")
     @Test
     public void testCreateDeleteTask() throws IOException, InterruptedException {
         authWithDefaultUser();
