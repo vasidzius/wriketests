@@ -5,7 +5,7 @@ import ru.yandex.qatools.allure.annotations.Description;
 
 import static org.junit.Assert.assertTrue;
 
-public class LoginPageStepsTest extends BasePageSteps {
+public class LoginPageStepsTest extends BasePageStepsTest {
 
     private final WorkPageSteps workPageSteps = injector.getInstance(WorkPageSteps.class);
 

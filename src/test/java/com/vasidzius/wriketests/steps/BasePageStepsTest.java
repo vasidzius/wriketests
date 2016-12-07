@@ -18,7 +18,7 @@ import ru.yandex.qatools.allure.annotations.Step;
 import java.net.PasswordAuthentication;
 
 @SuppressWarnings("WeakerAccess")
-public class BasePageSteps {
+public class BasePageStepsTest {
 
     final Injector injector = Guice.createInjector(new GuiceModule());
 

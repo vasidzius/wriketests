@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-public class WorkPageStepsTest extends BasePageSteps {
+public class WorkPageStepsTest extends BasePageStepsTest {
 
     private final WorkPageSteps workPageSteps = injector.getInstance(WorkPageSteps.class);
 
