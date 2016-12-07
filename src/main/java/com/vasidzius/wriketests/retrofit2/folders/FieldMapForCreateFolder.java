@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class FieldMapForCreateFolder {
 
-    private Map<String, String> internalMap = new HashMap<String, String>();
+    private final Map<String, String> internalMap = new HashMap<>();
 
     private FieldMapForCreateFolder(){}
 

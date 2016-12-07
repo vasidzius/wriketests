@@ -92,12 +92,14 @@ public class RetrofitTest {
         assertEquals("IEAAO2AZI7777777", folder.getId());
     }
 
+    @Description("Получить id корневой папки")
     @Test
     public void testGetRootFolderId() throws IOException {
         String rootFolderId = getRootFolderId(this);
         assertEquals("IEAAO2AZI7777777", rootFolderId);
     }
 
+    @Description("Создать, затем удалить папку")
     @Test
     public void testCreateDeleteFolder() throws IOException {
         Call<ResponseBody> callCreateFolder = service.createFolder(
@@ -116,6 +118,7 @@ public class RetrofitTest {
 
     }
 
+    @Description("Сломаный тест для проверки CustomAssert")
     @Test
     public void testBrokenForCheckCustomAssert() throws IOException {
         Call<ResponseBody> callCreateFolder = service.brokenRequest();
@@ -123,6 +126,7 @@ public class RetrofitTest {
         customAssert(response);
     }
 
+    @Description("Взять таску по имени")
     @Test
     public void testGetTaskByName() throws IOException {
         Call<ResponseBody> callGetTaskByName = service.getTask("test123");

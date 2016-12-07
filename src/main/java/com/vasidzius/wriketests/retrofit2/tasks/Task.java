@@ -10,29 +10,29 @@ public class Task {
     private String title;
     private String description;
     private String briefDescription;
-    private List<String> parentIds = new ArrayList<String>();
-    private List<String> superParentIds = new ArrayList<String>();
-    private List<String> sharedIds = new ArrayList<String>();
-    private List<String> responsibleIds = new ArrayList<String>();
+    private List<String> parentIds = new ArrayList<>();
+    private List<String> superParentIds = new ArrayList<>();
+    private List<String> sharedIds = new ArrayList<>();
+    private List<String> responsibleIds = new ArrayList<>();
     private String status;
     private String importance;
     private String createdDate;
     private String updatedDate;
     private Dates dates;
     private String scope;
-    private List<String> authorIds = new ArrayList<String>();
+    private List<String> authorIds = new ArrayList<>();
     private String customStatusId;
     private Boolean hasAttachments;
     private Integer attachmentCount;
     private String permalink;
     private String priority;
     private Boolean followedByMe;
-    private List<String> followerIds = new ArrayList<String>();
-    private List<String> superTaskIds = new ArrayList<String>();
-    private List<Object> subTaskIds = new ArrayList<Object>();
-    private List<Object> dependencyIds = new ArrayList<Object>();
-    private List<Metadatum> metadata = new ArrayList<Metadatum>();
-    private List<CustomField> customFields = new ArrayList<CustomField>();
+    private List<String> followerIds = new ArrayList<>();
+    private List<String> superTaskIds = new ArrayList<>();
+    private List<Object> subTaskIds = new ArrayList<>();
+    private List<Object> dependencyIds = new ArrayList<>();
+    private List<Metadatum> metadata = new ArrayList<>();
+    private List<CustomField> customFields = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -46,14 +46,14 @@ public class Task {
         return description;
     }
 
-    static class CustomField {
+    private static class CustomField {
 
         private String id;
         private String value;
 
     }
 
-    static class Dates {
+    private static class Dates {
 
         private String type;
         private Integer duration;
@@ -62,7 +62,7 @@ public class Task {
 
     }
 
-    static class Metadatum {
+    private static class Metadatum {
 
         private String key;
         private String value;

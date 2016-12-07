@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class CustomRetrofit {
 
-    private WrikeService service;
+    private final WrikeService service;
 
     public CustomRetrofit() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();

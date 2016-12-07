@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class WorkPageStepsTest extends BasePageSteps {
 
-    private WorkPageSteps workPageSteps = injector.getInstance(WorkPageSteps.class);
+    private final WorkPageSteps workPageSteps = injector.getInstance(WorkPageSteps.class);
 
     @Description("Отрыть страницу Workspace")
     @Test
@@ -34,7 +34,7 @@ public class WorkPageStepsTest extends BasePageSteps {
 
     @Description("'Теперь тут порядок!' тест")
     @Test
-    public void testOpenInboxMessages(){
+    public void testOpenInboxMessages() throws InterruptedException {
         authWithDefaultUser();
         workPageSteps.openInboxMessagesFolder();
         assertTrue(workPageSteps.inboxMessagesIsOpened());

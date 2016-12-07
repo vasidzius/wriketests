@@ -29,8 +29,10 @@ class WorkPageSteps {
     }
 
     @Step("Папка 'Входящие' открыта")
-    boolean inboxMessagesIsOpened() {
-        return ("Теперь тут порядок!".equals(workSpacePage.inboxMessages.text.getText()));
+    boolean inboxMessagesIsOpened() throws InterruptedException {
+        Thread.sleep(2000);
+        String text = workSpacePage.inboxMessages.text.getText();
+        return ("Теперь тут порядок!".equals(text));
     }
 
     @Step("Создать новую задачу в корневой папке")

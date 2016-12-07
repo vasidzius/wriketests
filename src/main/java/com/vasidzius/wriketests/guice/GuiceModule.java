@@ -14,7 +14,11 @@ public class GuiceModule extends AbstractModule {
         if (System.getProperty("currentBrowser") == null) {
             System.out.println("No property 'currentBrowser' exists");
 
-            bind(WebDriver.class).toInstance(new FirefoxDriver());
+//            bind(WebDriver.class).toInstance(new FirefoxDriver());
+
+            File file = new File(getClass().getResource("/chromedriver.exe").getFile());
+            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+            bind(WebDriver.class).toInstance(new ChromeDriver());
 
         } else if (System.getProperty("currentBrowser").equals("Firefox")) {
             bind(WebDriver.class).toInstance(new FirefoxDriver());
@@ -30,14 +34,5 @@ public class GuiceModule extends AbstractModule {
         ));
 
     }
-
-//    @Provides
-//    WebDriver getChromeDriver() {
-//        File file = new File(getClass().getResource("chromedriver.exe").getFile());
-//        System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-//        return new ChromeDriver();
-//
-//    }
-
 
 }

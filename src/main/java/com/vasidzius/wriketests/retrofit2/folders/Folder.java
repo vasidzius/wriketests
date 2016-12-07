@@ -7,7 +7,7 @@ public class Folder {
 
     private String id;
     private String title;
-    private List<String> childIds = new ArrayList<String>();
+    private List<String> childIds = new ArrayList<>();
     private String scope;
 
     public String getTitle() {

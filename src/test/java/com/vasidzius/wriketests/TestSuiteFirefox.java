@@ -15,7 +15,7 @@ import org.junit.runners.Suite;
 public class TestSuiteFirefox {
 
     @SuppressWarnings("FieldCanBeLocal")
-    private static String currentBrowser = "Firefox";
+    private static final String currentBrowser = "Firefox";
 
     @BeforeClass
     public static void before(){

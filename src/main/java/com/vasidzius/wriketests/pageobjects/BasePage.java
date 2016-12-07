@@ -8,7 +8,7 @@ import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementLocatorFactory
 
 public class BasePage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
     public WebDriver getDriver() {
         return driver;
     }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class FieldMapForCreateTask {
 
-    private Map<String, String> internalMap = new HashMap<String, String>();
+    private final Map<String, String> internalMap = new HashMap<>();
 
     private FieldMapForCreateTask(){}
 
@@ -41,7 +41,7 @@ public class FieldMapForCreateTask {
         DEFERRED("Deferred"),
         CANCELLED("Cancelled");
 
-        private String value;
+        private final String value;
 
         StatusEnum(String value){
             this.value = value;
@@ -54,7 +54,7 @@ public class FieldMapForCreateTask {
         NORMAL("Normal"),
         LOW("Low");
 
-        private String value;
+        private final String value;
 
         ImportanceEnum(String value){
             this.value = value;

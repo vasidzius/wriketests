@@ -5,7 +5,6 @@ import com.vasidzius.wriketests.steps.WorkPageStepsTest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import ru.yandex.qatools.allure.annotations.Parameter;
 
 @RunWith(Suite.class)
 
@@ -16,7 +15,7 @@ import ru.yandex.qatools.allure.annotations.Parameter;
 public class TestSuiteChrome {
 
     @SuppressWarnings("FieldCanBeLocal")
-    private static String currentBrowser = "Chrome";
+    private static final String currentBrowser = "Chrome";
 
     @BeforeClass
     public static void before(){
