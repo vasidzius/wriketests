@@ -11,8 +11,8 @@
     <dependencies>
 
         <dependency>
-            <groupId>JUnit</groupId>
-            <artifactId>Junit</artifactId>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
 
