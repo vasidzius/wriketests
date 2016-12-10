@@ -33,4 +33,4 @@
 - mvn test site запустит все сьюты, таким образом в Allure-отчете будут по паре одних и тех же UI тестов для каждого из браузеров, но в каждом конкретном тесте сверху будет указано с каким именно браузером был запущен UI тест
 
 Проект на https://github.com/vasidzius/wriketests 
-Для запуска - mvn clean test site
+Для запуска - mvn clean test site. Красивый allure отчет в target/site -> allure*.html
